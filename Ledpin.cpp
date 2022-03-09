@@ -13,8 +13,14 @@ Ledpin::Ledpin(void){}
 
 //############################################################
 
-void Ledpin::set_state(int state){
+void Ledpin::begin(){
 	pinMode(pin, OUTPUT);
+	pulse();
+}
+
+//############################################################
+
+void Ledpin::set_state(int state){
 	digitalWrite(pin, state);
 }
 
@@ -26,7 +32,7 @@ void Ledpin::low(){
 	set_state(LOW);
 }
 
-void Ledpin::pulse(int pulses=PULSES, int on_delay=SHORT_DELAY, int off_delay=LONG_DELAY){
+void Ledpin::pulse(int pulses=PULSES, int on_delay=ON_DELAY, int off_delay=OFF_DELAY){
 	if(pulses>0){
 		low();
 		for(int i=0; i<pulses; i++){
